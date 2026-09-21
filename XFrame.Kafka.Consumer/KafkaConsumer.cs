@@ -15,12 +15,12 @@ namespace XFrame.Kafka.Consumer
 
         public KafkaConsumer(
             ILogger<KafkaConsumer> logger, 
-            IKafkaConsumerConnectionFactory _connectionFactory, 
+            IKafkaConsumerConnectionFactory connectionFactory, 
             ITransientFaultHandler<IKafkaResilientStrategy> transientFaultHandler)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-            _connectionFactory = _connectionFactory ?? throw new ArgumentNullException(nameof(_connectionFactory));
-            _transientFaultHandler = transientFaultHandler ?? throw new ArgumentNullException(nameof(_transientFaultHandler));
+            _connectionFactory = connectionFactory ?? throw new ArgumentNullException(nameof(connectionFactory));
+            _transientFaultHandler = transientFaultHandler ?? throw new ArgumentNullException(nameof(transientFaultHandler));
         }
             
         public async Task<ConsumeResult<string, string>> ConsumeAsync(TimeSpan timeout, CancellationToken cancellationToken = default)
