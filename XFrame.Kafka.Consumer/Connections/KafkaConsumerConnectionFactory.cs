@@ -27,6 +27,8 @@ namespace XFrame.Kafka.Consumer.Connections
             var consumer = new ConsumerBuilder<TKey, TValue>(consumerConfig)
                 .Build();
 
+            consumer.Subscribe(_configuration.Topic);
+
             return new KafkaConsumerConnection<TKey, TValue>(consumer);
         }
     }
