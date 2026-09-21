@@ -16,7 +16,7 @@ namespace XFrame.Kafka.Consumer.Connections
             CancellationToken cancellationToken = default)
         {
             var result = _consumer.Consume(timeout);
-            _consumer.Commit();
+            _consumer.Commit(result);
 
             return Task.FromResult(result);
         }
